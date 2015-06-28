@@ -9,6 +9,8 @@
 ## 導入手順
 
 1. vim-vspecフォルダをそのままvim本体へプラグインとしてインストール（初回のみ）
+1. コンソールから実行されるvimがテスト対象のvimであるかを確認（初回のみ）
+  * aliasは影響しないことに注意。
 1. Gemfile / Rakefile / tフォルダ / vendorフォルダをテスト対象プラグインフォルダ内へコピー
 1. テストに必要なGemをプラグインフォルダへインストール
 ```sh
@@ -29,7 +31,7 @@ bundle install --path vendor/bundle
 ## テストライブラリのインストール先についてのメモ
 
 * autoload/vspec.vimは、プラグインとしてvimへインストールして、bin/prove-vspecの実行時にパス（例えば、~/vim/bundle/vim-vspecなど）を渡すことで、テスト対象のプラグインフォルダ内に不要となるが、vim-vspecのバージョンアップによる後方互換性の喪失に備えて独立させる。
-* rspec他のGemについても同様である。
+* rspec他のGemについても同様。
 
 ## 参考リソース
 
