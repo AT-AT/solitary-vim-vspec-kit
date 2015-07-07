@@ -25,9 +25,11 @@ describe '_HandleLocalDict_'
     Expect _HandleLocalDict_(local_name, 'baz') == ['qux', 'qux-qux']
     Expect Ref(local_name) == local_changed
 
+    call _HandleLocalDict_(local_name, 1)
     call _HandleLocalDict_(local_name, 0)
 
     Expect Ref(local_name) == local_default
+
 
     let stack_name = 'foobarbazquz_stack'
     call _HandleLocalDict_(local_name, 1, stack_name)
