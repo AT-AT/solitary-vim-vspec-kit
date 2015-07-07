@@ -47,6 +47,29 @@ describe '_HandleLocalDict_'
     Expect Ref(local_name) == local_default
   end
 
+  it 'should handle function in dictionary'
+    let local_name = 's:test_helpers_func'
+    let dict_func = 'test'
+    let var_name = 'testvar'
+
+    call _HandleLocalDict_(local_name, 1)
+
+    Expect _HandleLocalDict_(local_name, var_name) == 0
+
+    let Func = _HandleLocalDict_(local_name, dict_func)
+    let dict = _HandleLocalDict_(local_name, '')
+
+    Expect type(Func) == type(function('tr'))
+
+    call dict[dict_func]()
+
+    Expect _HandleLocalDict_(local_name, var_name) == 1
+
+    call _HandleLocalDict_(local_name, 0)
+
+    Expect _HandleLocalDict_(local_name, var_name) == 0
+  end
+
 end
 
 
