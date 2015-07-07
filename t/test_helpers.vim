@@ -17,6 +17,7 @@ describe '_HandleLocalDict_'
     Expect _HandleLocalDict_(local_name, 'foo') == 'bar'
     Expect _HandleLocalDict_(local_name, 'baz') == ['qux']
     Expect Ref(local_name) == local_default
+    Expect _HandleLocalDict_(local_name, '') == local_default
 
     call _HandleLocalDict_(local_name, local_changed)
 
