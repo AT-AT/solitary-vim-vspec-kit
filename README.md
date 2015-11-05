@@ -10,7 +10,13 @@
 
 1. vim-vspecフォルダをそのままvim本体へプラグインとしてインストール（初回のみ）
 1. コンソールから実行されるvimがテスト対象のvimであるかを確認（初回のみ）
-  * aliasは影響しないことに注意。
+  * 対象のVimは `/Applications/MacVim.app/Contents/MacOS/Vim` となる。
+  * aliasの設定や、環境変数PATHへの追加はテスト時には影響しないため、シンボリックリンクを設置する。
+  ```sh
+  mv /usr/bin/vim /usr/bin/vim.system
+  ln -s /Applications/MacVim.app/Contents/MacOS/Vim /usr/bin/vim
+  ```
+  * なお10.11では、一度SIPを無効にしてから上記設定を行い、再度有効にしておく。
 1. Gemfile / Rakefile / tフォルダ / vendorフォルダをテスト対象プラグインフォルダ内へコピー
 1. テストに必要なGemをプラグインフォルダへインストール
 ```sh
